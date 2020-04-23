@@ -11,5 +11,9 @@
       "jquery",
       "materialize-css"
     ]
-  }
+  },
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts"
+  ]
 }
