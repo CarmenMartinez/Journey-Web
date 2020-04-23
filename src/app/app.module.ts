@@ -11,8 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { TravelComponent } from './travel/travel.component';
+import { TravelComponent } from './travels/travel/travel.component';
 import { TravelsComponent } from './travels/travels.component';
+import { TravellogComponent } from './travels/travellog/travellog.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TravelsComponent } from './travels/travels.component';
     FooterComponent,
     LoginComponent,
     TravelComponent,
-    TravelsComponent
+    TravelsComponent,
+    TravellogComponent
   ],
   imports: [
     BrowserModule,
