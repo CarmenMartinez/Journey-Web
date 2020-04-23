@@ -5,7 +5,7 @@
 }
 
 .card-login {
-    margin-top: -5%; 
+    margin-top: -3%; 
 }
 
 .container-login {
@@ -15,8 +15,8 @@
 .logo-iot {
     width: 310px;
     height: 298px;
-    margin-top: 28px;
-    z-index: -1;
-    
+    margin-top: 16px;
+    z-index: 1;
+    position: relative;
   }
 
