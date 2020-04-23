@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TravelService } from '../travel.service';
+import { TravelService } from 'src/app/travel.service';
 
 @Component({
   selector: 'app-travel',
