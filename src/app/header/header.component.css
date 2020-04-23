@@ -2,3 +2,10 @@
     margin: 2px;
     margin-left: 10px;
 }
+
+.icon-image {
+    margin: 3px;
+    margin-left: 10px;
+    max-width: 50px;
+    max-height: 50px;
+}
