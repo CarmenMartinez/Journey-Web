@@ -1,21 +1,80 @@
 
-<div class="container">
-    <div class="col s12 m7">
-        <h2 class="header">Login placeholder</h2>
-        <div class="card horizontal">
-            <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6">
-            </div>
-            <div class="card-stacked">
-                <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
-                
+<div class="row center container-login">
+    <!-- Image -->
+    <div class="col s12 center-align center">
+        <img class="responsive-img z-depth-3 logo-iot" src="assets/images/Logo IOT.png" alt="app logo">
+    </div>
+    <!-- Login Card-->
+    <div class="col s12 m10 offset-m1 l6 offset-l3 card-login">
+        <div class="card sticky-action z-depth-4 card-panel hoverable">
+            <!-- <form #f="ngForm" (ngSubmit)="submit(f)"> -->
+            <form>
+                <div class="card-content" >
+                    <div class="row center-align">
+                        <span class="card-title grey-text text-darken-4 center-align">Ingresar</span>
+                        <!--TODO: Add opacity to welcome text-->
+                        <p class="center-align"> ¡Bienvenido!</p>
+                        <p class="center-align"> Estás a unos clicks de los datos que necesitas</p>
+                        <br/>
+                        <!-- email field -->
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix center">account_circle</i>
+                            <input 
+                                    ng-model="user.email"
+                                    id="email"
+                                    type='email'
+                                    name='email'
+                                    class="validate left-align"
+                                    required="true"
+                                    placeholder="Email"/>
+                            <label for="email"
+                                    class="left-align">Enter your email
+                            </label>
+                        </div>
+
+                        <!-- password field -->
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix center">lock_outline</i>
+                            <input
+                                    ng-model="user.password"
+                                    type='password'
+                                    name='password'
+                                    id='password'
+                                    class="validate"
+                                    required="true"
+                                    placeholder="Password"/>
+
+                            <label for="password"
+                                   class=" left-align">Enter your password
+                            </label>
+                        </div>
+
+                        <input type="submit" 
+                            class="waves-effect waves-light btn" 
+                            value ='Iniciar Sesión' 
+                            id="submit"
+                        />
+
+                    </div>
                 </div>
-                <div class="card-action">
-                <a href="#">This is a link</a>
+            </form>
+
+            <!--Extra actions -->
+            <div class="card-action" >
+                    <div class="row center">
+                        <!-- TODO: If it is an option to create an account 
+                            <div class="col s6 left-align valign-wrapper">
+                                <a href="#" class="activator btn-flat white orange-text ">
+                                    <i class=" fa fa-rocket blue-text white" aria-hidden="true"></i>
+                                    SignUp</a>
+                            </div> 
+                        -->
+                        <p class="margin center medium-small">
+                            <a href="#" data-target="ResetPassDialog" class="white blue-text"> ¿Olvidaste tu contraseña? </a>
+                        </p>
+
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>
-        

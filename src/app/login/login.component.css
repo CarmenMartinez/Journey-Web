@@ -1,0 +1,22 @@
+.card-action {
+    margin : 2px; 
+    padding-bottom:0px;
+    padding-top : 5px
+}
+
+.card-login {
+    margin-top: -5%; 
+}
+
+.container-login {
+    position: relative;
+}
+
+.logo-iot {
+    width: 310px;
+    height: 298px;
+    margin-top: 28px;
+    z-index: -1;
+    
+  }
+
