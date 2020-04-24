@@ -21,5 +21,29 @@
 
 </div>
 
-<button (click)="getTravels()">aber</button>
+<div class="container">
+    <table class="striped table-logs" style="margin-bottom: 5%; padding-bottom: 10%;">
+        <thead>
+          <tr>
+              <th>Id</th>
+              <th>Device</th>
+              <th>Date</th>
+              <th>Ubicación</th>
+              <th>Temperatura</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let travelLog of travelLogs">
+            <tr *ngFor="let log of travelLog.logs" >
+                <td>{{travelLog.travelId}}</td>
+                <td>{{log.deviceId}}</td>
+                <td>{{log.timestamp}}</td>
+                <td> {{log.location.lat}}, {{log.location.long}} </td>
+                <td>{{log.temperature}}</td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+
+<!-- <button (click)="getTravels()">aber</button> -->
 
