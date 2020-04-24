@@ -15,7 +15,7 @@ export class TravelService {
       observe: 'response'
     }).subscribe(
       (res: HttpResponse<Travel[]>) => {
-        console.log(res.body)
+        //console.log(res.body)
         this.travels = res.body;
         this.setActiveTravel();
         //this.setTravel(res.body['body'])
@@ -58,6 +58,10 @@ export class TravelService {
    }).subscribe(response => {
       console.log(response);
    });
+  }
+
+  getTravels(): Travel[] {
+    return this.travels;
   }
   
 }

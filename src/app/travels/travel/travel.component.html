@@ -1,43 +1,14 @@
-<<<<<<< HEAD
-<h5 class="center-align">ActiveTravel: {{activeTravel.travelID}}</h5>
+<h5 class="center-align">ActiveTravel: {{activeTravel.travelId}}</h5>
 
 <div class="container collection-travel">
 
     <ul class="collection">
-        <!-- <li class="collection-item avatar">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li> -->
         <li 
             *ngFor="let travel of travels"
             class="collection-item avatar"
         >
             <i class="material-icons circle ">subway</i>
-            <span class="title">{{travel.travelID}}</span>
+            <span class="title">{{travel.travelId}}</span>
             <p><br>
                 Product: {{travel.product}} <br>
                 Date: {{travel.timestamp}}
@@ -49,6 +20,6 @@
     
 
 </div>
-=======
-<h5 class="center-align">ActiveTravel: {{activeTravel.travelId}}</h5>
->>>>>>> master
+
+<button (click)="getTravels()">aber</button>
+
