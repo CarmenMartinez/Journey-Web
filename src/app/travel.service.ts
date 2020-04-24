@@ -25,8 +25,10 @@ export class TravelService {
   }
 
   setActiveTravel(){
-    let index = this.travels.findIndex((travel) => travel.status === true)
-    this.activeTravel = this.travels[index]
+    let index = this.travels.findIndex((travel) => travel.status === true);
+    if(index != -1){
+      this.activeTravel = this.travels[index];
+    }
   }
 
   private setTravel(response: HttpResponse<Travel>) {
