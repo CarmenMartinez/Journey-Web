@@ -1,10 +1,8 @@
 export class Travel {
     constructor(
-        /*
-            travelID: String,
-            timestamp: Timestamp | String | DateTime,
-            product: String,
-            status: Boolean
-        */
+        public travelID: string,
+        public timestamp: string,
+        public product: string,
+        public status: boolean
     ) {}
 }
