@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TravelService } from 'src/app/travel.service';
 import { Travel } from './Travel';
+import { TravellogService } from 'src/app/travellog.service';
+import { TravelLog } from '../travellog/Travellog';
 
 @Component({
   selector: 'app-travel',
@@ -9,24 +11,25 @@ import { Travel } from './Travel';
 })
 export class TravelComponent implements OnInit, AfterViewInit {
   activeTravel: Travel;
-  travels: Travel[] = [
-    new Travel("1", "a1", "b1", true),
-    new Travel("2", "a2", "b2", false),
-    new Travel("3", "a3", "b3", false),
-    new Travel("4", "a4", "b4", false)
-  ]
+  travels: Travel[] = [];
+
+  travelLogs: TravelLog[] = [];
   
-  constructor(private travelService: TravelService,) { }
+  constructor(private travelService: TravelService,
+    private travelLogService: TravellogService) { }
 
   ngOnInit(): void {
       this.activeTravel = this.getActiveTravel();
       this.getTravels();
+      this.getTravelLogs();
     
   }
 
   ngAfterViewInit(): void {
     this.activeTravel = this.getActiveTravel();
     this.getTravels();
+    this.getTravelLogs();
+
   }
   getActiveTravel(): Travel{
     return this.travelService.getActiveTravel();
@@ -42,5 +45,9 @@ export class TravelComponent implements OnInit, AfterViewInit {
 
   getTravels(){
     this.travels = this.travelService.getTravels();
+  }
+
+  getTravelLogs() {
+    this.travelLogs = this.travelLogService.getHistoryTravel();
   }
 }

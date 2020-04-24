@@ -30,7 +30,7 @@ export class TravellogService {
       
       logs.forEach((l : TravelLog) => {
         let lng = new Location(l['location']['lat'],  l['location']['long'])
-        let lg = new Log(l['deviceID'],l['timestamp'], lng, l['temperature'])
+        let lg = new Log(l['timestamp'],l['deviceID'], lng, l['temperature'])
         lgs.push(lg)
       });
 
