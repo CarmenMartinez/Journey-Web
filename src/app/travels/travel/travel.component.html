@@ -1,1 +1,25 @@
 <h5 class="center-align">ActiveTravel: {{activeTravel.travelId}}</h5>
+
+<div class="container collection-travel">
+
+    <ul class="collection">
+        <li 
+            *ngFor="let travel of travels"
+            class="collection-item avatar"
+        >
+            <i class="material-icons circle ">subway</i>
+            <span class="title">{{travel.travelId}}</span>
+            <p><br>
+                Product: {{travel.product}} <br>
+                Date: {{travel.timestamp}}
+            </p>
+            <a *ngIf="travel.status" href="#!" class="secondary-content"><i class="material-icons medium">hdr_strong</i></a>
+
+        </li>
+      </ul>
+    
+
+</div>
+
+<button (click)="getTravels()">aber</button>
+
