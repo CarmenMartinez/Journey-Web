@@ -18,7 +18,7 @@ export class TravellogService {
       },
       err => console.log(err)
     );
-   }
+  }
 
   private setTravels(tlogs: HttpResponse<TravelLog[]>) {
     const ids = Object.keys(tlogs);

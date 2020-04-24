@@ -9,16 +9,15 @@ import { Travel } from './Travel';
 })
 export class TravelComponent implements OnInit {
   activeTravel: Travel;
+  
   constructor(private travelService: TravelService) { }
 
   ngOnInit(): void {
     this.activeTravel = this.getActiveTravel();
-
-
   }
 
   getActiveTravel(): Travel{
-      return this.travelService.getActiveTravel();
+    return this.travelService.getActiveTravel();
   }
 
   createTravel(product: string){
