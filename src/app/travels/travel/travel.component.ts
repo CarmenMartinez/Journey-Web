@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TravelService } from 'src/app/travel.service';
+import { TravellogService } from 'src/app/travellog.service';
+import { Travel } from './Travel';
 
 @Component({
   selector: 'app-travel',
@@ -7,13 +9,24 @@ import { TravelService } from 'src/app/travel.service';
   styleUrls: ['./travel.component.css']
 })
 export class TravelComponent implements OnInit {
-
+  activeTravel: Travel;
   constructor(private travelService: TravelService) { }
 
   ngOnInit(): void {
-    console.log(this.travelService.getTravel());
+    this.activeTravel = this.getActiveTravel();
+
+
   }
 
+  getActiveTravel(): Travel{
+      return this.travelService.getActiveTravel();
+  }
 
+  createTravel(product: string){
+    this.travelService.createTravel(product);
+  }
 
+  stopTravel(travelID: string) {
+    this.travelService.stopTravel(travelID);
+  }
 }
