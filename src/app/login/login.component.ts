@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TravellogService } from '../travellog.service';
 
 @Component({
   selector: 'app-login',
