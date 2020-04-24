@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { TravelComponent } from './travels/travel/travel.component';
 import { TravelsComponent } from './travels/travels.component';
 import { TravellogComponent } from './travels/travellog/travellog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TravellogComponent } from './travels/travellog/travellog.component';
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

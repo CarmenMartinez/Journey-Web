@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TravellogService } from '../travellog.service';
+import { NgForm, } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,16 @@ import { TravellogService } from '../travellog.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+  }
+
+  submit(formulario: NgForm) {
+    
+    formulario.reset();
+    this.router.navigate(['/travel']);
   }
 
 }

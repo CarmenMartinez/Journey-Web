@@ -4,14 +4,22 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { TravelComponent } from './travels/travel/travel.component';
 import { TravellogComponent } from './travels/travellog/travellog.component';
+import { TravelsComponent } from './travels/travels.component';
 
 
 
 const routes: Routes = [
-  {path: '', component: TravelComponent},
+  {path: '', component: LoginComponent},
   //{path: '', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'travels', component: TravelsComponent, children: [
+    {path: '', component: TravelComponent},
+    // {path: ':id', component: TravellogComponent},
+    {path: 'travellogs', component: TravellogComponent},
+
+  ]},
+  {path: 'travel', component: TravelComponent},
   {path: 'travellog', component: TravellogComponent}
 ];
 
