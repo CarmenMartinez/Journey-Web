@@ -15,6 +15,7 @@ import { TravelComponent } from './travels/travel/travel.component';
 import { TravelsComponent } from './travels/travels.component';
 import { TravellogComponent } from './travels/travellog/travellog.component';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,10 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: '',
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

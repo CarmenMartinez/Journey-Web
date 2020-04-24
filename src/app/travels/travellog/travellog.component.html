@@ -1,4 +1,19 @@
-<p>TRAVEL: {{travelLogs[0].travelId}}</p>
+<!--<p>TRAVEL: {{travelLogs[0].travelId}}</p>
 <button (click)="getTravelbyId('048b1b73-838c-11ea-9910-c3774c7a5de2')">Travel Id</button>
 
-<p>THIS TRAVEL: {{travelLog.travelId}}</p>
+<p>THIS TRAVEL: {{travelLog.travelId}}</p>-->
+<h1 class="center-align">Travel log</h1>
+<div class="container assets">
+    <div id="chartContainer" class="container"></div>
+</div>
+
+<div class='container assets map'>
+    <agm-map 
+        [latitude]="latitude" 
+        [longitude]="longitude" 
+        [zoom]="zoom" >
+        <agm-marker 
+        [latitude]="latitude" 
+        [longitude]="longitude"></agm-marker>
+    </agm-map>
+</div>
