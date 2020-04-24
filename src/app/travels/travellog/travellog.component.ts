@@ -9,24 +9,20 @@ import { TravelLog } from './Travellog';
 })
 export class TravellogComponent implements OnInit {
   travelLogs : TravelLog []
+  travelLog: TravelLog = new TravelLog("", null)
   
   constructor(private travellogService: TravellogService) { }
 
   ngOnInit(): void {
-    console.log(2)
-    this.travelLogs = this.travellogService.getHistoryTravel()
-    console.log(this.travelLogs)
-    console.log(4)
-    // console.log('GET THIS TRAVELS', t)
-    // console.log('Id = 048b1b73-838c-11ea-9910-c3774c7a5de2', this.travellogService.getTravelById('048b1b73-838c-11ea-9910-c3774c7a5de2'))
-    // let arr : number [] = []
-    // arr.push(4)
-    // console.log(arr)
+    this.travelLogs = this.getHistoryTravel()
   }
-  
-  getTravel(){
-    this.travelLogs = this.travellogService.getHistoryTravel()
-    console.log(this.travelLogs)
+
+  getHistoryTravel(): TravelLog[]{
+    return this.travellogService.getHistoryTravel()
+  }
+
+  getTravelbyId(id: string) {
+    this.travelLog = this.travellogService.getTravelById(id)
   }
 
 }
