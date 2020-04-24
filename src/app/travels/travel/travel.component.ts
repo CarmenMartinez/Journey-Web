@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TravelService } from 'src/app/travel.service';
-import { TravellogService } from 'src/app/travellog.service';
 import { Travel } from './Travel';
 
 @Component({

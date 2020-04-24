@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse, HttpClient } from '@angular/common/http';
-import { TravelLog, Log } from './travels/travellog/Travellog';
 import { Travel } from './travels/travel/Travel';
 
 
