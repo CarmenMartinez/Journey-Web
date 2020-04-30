@@ -1,14 +1,40 @@
 import { Injectable } from '@angular/core';
 import { TravelLog, Location, Log } from './travels/travellog/Travellog';
 import { HttpResponse, HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TravellogService {
-  public travelLogs: TravelLog [] = [] 
+  public travelLogs: TravelLog [] = [];
+
+  travelLogSubject = new Subject<TravelLog[]>();
 
   constructor(private http:HttpClient) {
+    this.requestTravelLogs();
+  }
+
+  getHistoryTravel(): TravelLog[] {
+    return this.travelLogs;
+  }
+
+  getTravelById (id: string): TravelLog {
+    let index = this.travelLogs.findIndex((item) => item.travelId == id)
+    if(index == -1) return null
+    return this.travelLogs[index]
+  }
+
+  pushChanges() {
+    this.travelLogSubject.next(this.travelLogs.slice());
+  }
+
+  refreshTravelLogs() {
+    this.requestTravelLogs();
+    this.getHistoryTravel();
+  }
+
+  requestTravelLogs() {
     this.http.get('https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travels', {
       observe: 'response'
     })
@@ -37,16 +63,6 @@ export class TravellogService {
       let travelLog = new TravelLog(id, lgs);      
       this.travelLogs.push(travelLog);
     }  
-  }
-
-  getHistoryTravel(): TravelLog[] {
-    return this.travelLogs;
-  }
-
-  getTravelById (id: string): TravelLog {
-    let index = this.travelLogs.findIndex((item) => item.travelId == id)
-    if(index == -1) return null
-    return this.travelLogs[index]
   }
 }
 

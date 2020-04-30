@@ -1,7 +1,7 @@
 <h5 class="center-align">ActiveTravel: {{activeTravel.travelId}}</h5>
 
 <div class="container collection-travel">
-    <a class="waves-effect waves-light btn" (click)="getTravels()"><i class="material-icons">autorenew</i></a>
+    <a class="waves-effect waves-light btn" (click)="refreshTravels()"><i class="material-icons">autorenew</i></a>
     <ul class="collection">
         <li 
             *ngFor="let travel of travels"
@@ -20,7 +20,7 @@
 </div>
 
 <div class="container">
-    <a class="waves-effect waves-light btn" (click)="getTravelLogs()"><i class="material-icons">autorenew</i></a>
+    <a class="waves-effect waves-light btn" (click)="refreshTravelLogs()"><i class="material-icons">autorenew</i></a>
     <table class="striped table-logs" style="margin-bottom: 5%; padding-bottom: 10%;">
         <thead>
           <tr>
