@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse, HttpClient } from '@angular/common/http';
 import { Travel } from './travels/travel/Travel';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,14 +10,44 @@ import { Travel } from './travels/travel/Travel';
 export class TravelService {
   public travels: Travel [] = []
   activeTravel: Travel = new Travel("", "", "", false);
+  travelSubject = new Subject<Travel[]>();
 
   constructor(private http:HttpClient) {
+    this.requestTravels();
+  }
+
+
+  createTravel(product: String) {
+  this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
+      product: product
+    }).subscribe(response => {
+      console.log(response);
+    });
+  }
+  
+  getActiveTravel(): Travel {
+    return this.activeTravel;
+  }
+
+  getTravels(): Travel[] {
+    return this.travels;
+  }
+
+  pushChanges() {
+    this.travelSubject.next(this.travels.slice());
+  }
+
+  refreshTravels() {
+    this.requestTravels();
+    this.getTravels();
+  }
+
+  requestTravels() {
     this.http.get('https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel', {
       observe: 'response'
     }).subscribe(
       (res: HttpResponse<Travel[]>) => {
-        //this.travels = res.body;
-        Object.assign(this.travels, res.body);
+        this.setTravel(res.body);
         this.setActiveTravel();
       },
       err => console.log(err)
@@ -30,39 +61,16 @@ export class TravelService {
     }
   }
 
-  private setTravel(response: HttpResponse<Travel>) {
-    const id = response["id"];
-      let t: Travel = {
-        travelId: id,
-        timestamp: "",
-        product: "",
-        status: true
-      };
-    Object.assign(this.activeTravel, t); 
-  }
-
-  getActiveTravel(): Travel {
-    return this.activeTravel;
-  }
-
-  createTravel(product: String) {
-  this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
-      product: product
-    }).subscribe(response => {
-      console.log(response);
-    });
+  private setTravel(response: Travel[]) {
+    Object.assign(this.travels, response);
   }
 
   stopTravel(travelID: String) {
-   this.http.put("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
-     id: travelID
-   }).subscribe(response => {
-      console.log(response);
-   });
-  }
-
-  getTravels(): Travel[] {
-    return this.travels;
-  }
+    this.http.put("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
+      id: travelID
+    }).subscribe(response => {
+       console.log(response);
+    });
+   }
   
 }
