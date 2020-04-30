@@ -19,16 +19,15 @@ export class TravelComponent implements OnInit, AfterViewInit {
     private travelLogService: TravellogService) { }
 
   ngOnInit(): void {
-      this.activeTravel = this.getActiveTravel();
       this.getTravels();
       this.getTravelLogs();
-    
+      this.activeTravel = this.getActiveTravel();
   }
 
   ngAfterViewInit(): void {
-    this.activeTravel = this.getActiveTravel();
-    this.getTravels();
-    this.getTravelLogs();
+    //this.activeTravel = this.getActiveTravel();
+    //this.getTravels();
+    //this.getTravelLogs();
 
   }
   getActiveTravel(): Travel{

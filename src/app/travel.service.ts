@@ -7,7 +7,7 @@ import { Travel } from './travels/travel/Travel';
   providedIn: 'root'
 })
 export class TravelService {
-  travels: Travel [] = []
+  public travels: Travel [] = []
   activeTravel: Travel = new Travel("", "", "", false);
 
   constructor(private http:HttpClient) {
@@ -15,10 +15,9 @@ export class TravelService {
       observe: 'response'
     }).subscribe(
       (res: HttpResponse<Travel[]>) => {
-        //console.log(res.body)
-        this.travels = res.body;
+        //this.travels = res.body;
+        Object.assign(this.travels, res.body);
         this.setActiveTravel();
-        //this.setTravel(res.body['body'])
       },
       err => console.log(err)
     );
@@ -39,7 +38,7 @@ export class TravelService {
         product: "",
         status: true
       };
-      Object.assign(this.activeTravel, t); 
+    Object.assign(this.activeTravel, t); 
   }
 
   getActiveTravel(): Travel {
