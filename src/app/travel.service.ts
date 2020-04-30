@@ -57,7 +57,7 @@ export class TravelService {
   setActiveTravel(){
     let index = this.travels.findIndex((travel) => travel.status === true);
     if(index != -1){
-      this.activeTravel = this.travels[index];
+      Object.assign(this.activeTravel, this.travels[index]);
     }
   }
 
