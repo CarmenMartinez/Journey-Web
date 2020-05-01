@@ -27,7 +27,6 @@ export class TravelComponent implements OnInit {
       this.getTravels();
       this.getTravelLogs();
       this.activeTravel = this.getActiveTravel();
-
       this.travelSubscript = this.travelService.travelSubject
       .subscribe(
         (travelsArray: Travel[]) => {
