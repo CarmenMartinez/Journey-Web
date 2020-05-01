@@ -15,7 +15,7 @@ export class TravelComponent implements OnInit {
   travels: Travel[] = [];
 
   travelLogs: TravelLog[] = [];
-
+  
   private travelSubscript: Subscription;
   private travelLogSubscript: Subscription;
 
@@ -69,6 +69,10 @@ export class TravelComponent implements OnInit {
 
   stopTravel(travelID: string) {
     this.travelService.stopTravel(travelID);
+  }
+
+  formatDate(d: Date): String {
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
   }
 
 }
