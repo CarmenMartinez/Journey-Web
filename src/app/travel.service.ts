@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class TravelService {
   public travels: Travel [] = []
-  activeTravel: Travel = new Travel("", "", "", false);
+  activeTravel: Travel = new Travel("", new Date(), "", false);
   travelSubject = new Subject<Travel[]>();
 
   constructor(private http:HttpClient) {
@@ -62,6 +62,10 @@ export class TravelService {
   }
 
   private setTravel(response: Travel[]) {
+    response.forEach(travel => {
+      let newDate = new Date(Number(travel.timestamp)* 1000);
+      travel.timestamp = newDate;
+    });
     Object.assign(this.travels, response);
   }
 

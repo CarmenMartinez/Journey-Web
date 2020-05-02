@@ -11,7 +11,7 @@
             <span class="title">{{travel.travelId}}</span>
             <p><br>
                 Product: {{travel.product}} <br>
-                Date: {{travel.timestamp}}
+                Date: {{formatDate(travel.timestamp)}}
             </p>
             <a *ngIf="travel.status" href="#!" class="secondary-content"><i class="material-icons medium">hdr_strong</i></a>
 

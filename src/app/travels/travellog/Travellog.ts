@@ -8,7 +8,7 @@ export class TravelLog {
 
 export class Log {
     constructor (
-        public timestamp: string,
+        public timestamp: Date,
         public deviceId: string,
         public location: Location,
         public temperature: number

@@ -56,7 +56,8 @@ export class TravellogService {
       
       logs.forEach((l : TravelLog) => {
         let lng = new Location(l['location']['lat'],  l['location']['long'])
-        let lg = new Log(l['timestamp'],l['deviceID'], lng, l['temperature'])
+        let newDate = new Date(Number(l['timestamp'])* 1000);
+        let lg = new Log(newDate,l['deviceID'], lng, l['temperature'])
         lgs.push(lg)
       });
 
