@@ -5,7 +5,6 @@ import * as $ from 'jquery';
 import * as CanvasJS from '../../../assets/canvasjs.min.js';
 import { TravelService } from 'src/app/travel.service';
 import { Travel } from '../travel/Travel';
-import { importExpr } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-travellog',
@@ -91,6 +90,7 @@ export class TravellogComponent implements OnInit {
   refresh(){
     this.setCurrentTravelLog()
     this.refreshChart()
+    this.refreshMap()
   }
 
   refreshChart(){
@@ -100,7 +100,18 @@ export class TravellogComponent implements OnInit {
   }
 
   refreshMap(){
-    
+    let orderLogs = this.travelLog.logs.sort((a, b) => {      
+      if (a.timestamp > b.timestamp){
+        return -1;
+      } 
+      else if (a.timestamp == b.timestamp){
+        return 0;
+      }
+      else return 1;
+    })
+    this.latitude = Number.parseFloat(orderLogs[0].location.lat)
+    this.longitude = Number.parseFloat(orderLogs[0].location.long)
+    this.zoom = 15;
   }
 
   renderChart(){
