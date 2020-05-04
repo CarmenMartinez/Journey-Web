@@ -99,6 +99,10 @@ export class TravellogComponent implements OnInit {
     this.renderChart()
   }
 
+  refreshMap(){
+    
+  }
+
   renderChart(){
     this.chart = new CanvasJS.Chart("chartContainer",{
       exportEnabled: true,
