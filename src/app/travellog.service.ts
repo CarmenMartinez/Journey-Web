@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 })
 export class TravellogService {
   public travelLogs: TravelLog [] = [];
+  public logsById: TravelLog = new TravelLog("", null);
 
   travelLogSubject = new Subject<TravelLog[]>();
 

@@ -1,5 +1,19 @@
+.active-icon {
+    margin-right: 30px;;
+    font-size: 4rem;
+    position: sticky;
+}
 .collection-travel{
     margin-top: 8%;
+}
+
+.log-table {
+    margin-bottom: 5%; 
+    padding-bottom: 10%;
+}
+
+.travel-header {
+    width: 100%;
 }
 
 
