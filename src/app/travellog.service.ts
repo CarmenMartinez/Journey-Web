@@ -17,6 +17,7 @@ export class TravellogService {
   }
 
   getHistoryTravel(): TravelLog[] {
+    console.log("FROM SERVICE ", this.travelLogs)
     return this.travelLogs;
   }
 
@@ -49,22 +50,23 @@ export class TravellogService {
 
   private setTravels(tlogs: HttpResponse<TravelLog[]>) {
     const ids = Object.keys(tlogs);
-    
+    let inTravelLogs: TravelLog [] = [];
     for (const id of ids){
-      const logs = tlogs[id]['logs']
+      const logs = tlogs[id]['logs'];
       
-      let lgs : Log[] = []
+      let lgs : Log[] = [];
       
       logs.forEach((l : TravelLog) => {
-        let lng = new Location(l['location']['lat'],  l['location']['long'])
+        let lng = new Location(l['location']['lat'],  l['location']['long']);
         let newDate = new Date(Number(l['timestamp'])* 1000);
-        let lg = new Log(newDate,l['deviceID'], lng, l['temperature'])
+        let lg = new Log(newDate,l['deviceID'], lng, l['temperature']);
         lgs.push(lg)
       });
 
       let travelLog = new TravelLog(id, lgs);      
-      this.travelLogs.push(travelLog);
-    }  
+      inTravelLogs.push(travelLog);
+    }
+    Object.assign(this.travelLogs, inTravelLogs)  
   }
 }
 
