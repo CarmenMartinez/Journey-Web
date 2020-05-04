@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 export class TravelService {
   public travels: Travel [] = []
   activeTravel: Travel = new Travel("", new Date(), "", false);
+  
   travelSubject = new Subject<Travel[]>();
 
   constructor(private http:HttpClient) {

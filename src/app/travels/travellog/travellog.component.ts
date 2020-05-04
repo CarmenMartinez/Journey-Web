@@ -3,6 +3,9 @@ import { TravellogService } from 'src/app/travellog.service';
 import { TravelLog } from './Travellog';
 import * as $ from 'jquery';
 import * as CanvasJS from '../../../assets/canvasjs.min.js';
+import { TravelService } from 'src/app/travel.service';
+import { Travel } from '../travel/Travel';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-travellog',
@@ -12,31 +15,36 @@ import * as CanvasJS from '../../../assets/canvasjs.min.js';
 export class TravellogComponent implements OnInit {
   travelLogs : TravelLog []
   travelLog: TravelLog = new TravelLog("", null)
+  currentTravel: Travel;
   latitude: number;
   longitude: number;
   zoom:number;
+  chart;
+  dataPoints; 
   
-  constructor(private travellogService: TravellogService) { }
+  constructor(private travellogService: TravellogService,
+    private travelService: TravelService) { }
 
   ngOnInit(): void {
-    this.travelLogs = this.getHistoryTravel()
-    let dataPoints = [
-      {x: 1, y: 10},
-      {x: 2, y: 10.5},
-      {x: 3, y: 10.3},
-      {x: 4, y: 11},
-      {x: 5, y: 12},
-      {x: 6, y: 14},
-      {x: 7, y: 9}
-    ];
-    let chart = new CanvasJS.Chart("chartContainer",{
-      exportEnabled: true,
-      data: [{
-        type: "spline",
-        dataPoints : dataPoints,
-      }]
-    })
-    chart.render()
+    this.travelLogs = this.getHistoryTravel();
+    this.setCurrentTravel();
+    this.setCurrentTravelLog();
+    if(this.dataPoints) {
+      this.refresh();
+    }
+    else {
+      this.dataPoints = [
+        {x: 1, y: 10},
+        {x: 2, y: 10.5},
+        {x: 3, y: 10.3},
+        {x: 4, y: 11},
+        {x: 5, y: 12},
+        {x: 6, y: 14},
+        {x: 7, y: 9}
+      ];
+      this.renderChart();
+    }
+
     this.setCurrentLocation();
   }
 
@@ -46,6 +54,28 @@ export class TravellogComponent implements OnInit {
 
   getTravelbyId(id: string) {
     this.travelLog = this.travellogService.getTravelById(id)
+  }
+
+  getTravelLogDateTemp(){
+    let dateTemps = this.travelLog.logs.map((item) => {
+      return {x: item.timestamp.getHours(), y: item.temperature}
+    })
+    return dateTemps;
+  }
+
+  setCurrentTravel(){
+    this.currentTravel = this.travelService.getActiveTravel()
+  }
+
+  setCurrentTravelLog(){
+    if(!this.currentTravel) return;
+    this.setTravelLog(this.currentTravel.travelId)
+  }
+
+  setTravelLog(id: string){
+    let index = this.travelLogs.findIndex((travel) => travel.travelId == id)
+    if(index == -1) return;
+    Object.assign(this.travelLog, this.travelLogs[index])
   }
 
   private setCurrentLocation() {
@@ -58,8 +88,27 @@ export class TravellogComponent implements OnInit {
     }
   }
  
+  refresh(){
+    this.setCurrentTravelLog()
+    this.refreshChart()
+  }
 
+  refreshChart(){
+    let data = this.getTravelLogDateTemp();
+    this.dataPoints = data;
+    this.renderChart()
+  }
 
+  renderChart(){
+    this.chart = new CanvasJS.Chart("chartContainer",{
+      exportEnabled: true,
+      data: [{
+        type: "spline",
+        dataPoints : this.dataPoints,
+      }]
+    })
+    this.chart.render()
+  }
   
 
 }
