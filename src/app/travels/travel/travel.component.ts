@@ -40,7 +40,6 @@ export class TravelComponent implements OnInit {
            this.travelLogs = logsArray;
         }
       );
-
   }
 
   getActiveTravel(): Travel{
@@ -57,6 +56,15 @@ export class TravelComponent implements OnInit {
 
   getTravelLogs() {
     this.travelLogs = this.travelLogService.getHistoryTravel();
+  }
+
+  getTravelLogsById(id: string) {
+    let travel: TravelLog = this.travelLogService.getTravelById(id);
+    if(travel) {
+      return this.travelLogService.getTravelById(id).logs;
+    } else {
+      return null;
+    }
   }
 
   refreshTravels() {
