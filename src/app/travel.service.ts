@@ -19,7 +19,7 @@ export class TravelService {
 
 
   createTravel(product: String) {
-  this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
+    this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
       product: product
     }).subscribe(response => {
       console.log(response);
