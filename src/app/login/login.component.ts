@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   submit(formulario: NgForm) {
     
     formulario.reset();
-    this.router.navigate(['/travellog']);
+    this.router.navigate(['/travel']);
   }
 
 }
