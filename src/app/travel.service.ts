@@ -19,7 +19,7 @@ export class TravelService {
 
 
   createTravel(product: String) {
-  this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
+    this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
       product: product
     }).subscribe(response => {
       console.log(response);
@@ -67,7 +67,16 @@ export class TravelService {
       let newDate = new Date(Number(travel.timestamp)* 1000);
       travel.timestamp = newDate;
     });
-    Object.assign(this.travels, response);
+    let travels = response.sort((a, b) => {
+      if (a.timestamp > b.timestamp){
+        return -1;
+      } 
+      else if (a.timestamp == b.timestamp){
+        return 0;
+      }
+      else return 1;
+    })
+    Object.assign(this.travels, travels);
   }
 
   stopTravel(travelID: String) {

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { TravelComponent } from './travels/travel/travel.component';
 import { TravellogComponent } from './travels/travellog/travellog.component';
 import { TravelsComponent } from './travels/travels.component';
+import { DriverComponent } from './driver/driver.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'travellogs', component: TravellogComponent},
 
   ]},
+  {path: 'driver', component: DriverComponent},
   {path: 'travel', component: TravelComponent},
   {path: 'travellog', component: TravellogComponent}
 ];

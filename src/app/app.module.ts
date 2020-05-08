@@ -16,6 +16,7 @@ import { TravelsComponent } from './travels/travels.component';
 import { TravellogComponent } from './travels/travellog/travellog.component';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { DriverComponent } from './driver/driver.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AgmCoreModule } from '@agm/core';
     LoginComponent,
     TravelComponent,
     TravelsComponent,
-    TravellogComponent
+    TravellogComponent,
+    DriverComponent
   ],
   imports: [
     BrowserModule,

@@ -47,6 +47,12 @@ export class TravellogComponent implements OnInit {
     this.setCurrentLocation();
   }
 
+  getCurrentTravel(): Travel{
+    if(!this.currentTravel)
+      return null
+    return this.currentTravel
+  }
+
   getHistoryTravel(): TravelLog[]{
     return this.travellogService.getHistoryTravel()
   }
@@ -68,7 +74,7 @@ export class TravellogComponent implements OnInit {
 
   setCurrentTravelLog(){
     if(!this.currentTravel) return;
-    this.setTravelLog(this.currentTravel.travelId)
+    this.setTravelLog(this.currentTravel.travelId);
   }
 
   setTravelLog(id: string){
@@ -89,6 +95,9 @@ export class TravellogComponent implements OnInit {
  
   refresh(){
     this.setCurrentTravelLog()
+    
+    if(!this.travelLog.logs) return;
+    
     this.refreshChart()
     this.refreshMap()
   }
