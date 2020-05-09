@@ -12,14 +12,14 @@ import { DriverComponent } from './driver/driver.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   //{path: '', component: HomeComponent, canActivate: [AuthGuardService]},
-  {path: 'home', component: HomeComponent},
+  {path: 'inicio', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'travel', component: TravelsComponent, children: [
+  {path: 'viajes', component: TravelsComponent, children: [
     {path: '', component: TravelComponent},
      {path: ':id', component: TravellogComponent},
 
   ]},
-  {path: 'driver', component: DriverComponent},
+  {path: 'conductores', component: DriverComponent},
   {path: 'travellog', component: TravellogComponent}
 ];
 

@@ -1,4 +1,4 @@
-<h5 class="center-align">ActiveTravel: {{activeTravel.displayName}}</h5>
+<h5 class="center-align">Viaje activo: {{activeTravel.displayName}}</h5>
 
 <div class="container collection-travel">
     <a class="waves-effect waves-light btn" (click)="refreshTravels()"><i class="material-icons">autorenew</i></a>
@@ -13,7 +13,7 @@
                 
                     <span class="title">
                         {{travel.displayName}} <br/>
-                        Date: {{formatDate(travel.timestamp)}} - 
+                        Fecha: {{formatDate(travel.timestamp)}} - 
                     </span>
                     <span *ngIf="travel.endtimestamp">
                         {{formatDate(travel.endtimestamp)}}
@@ -21,7 +21,7 @@
                     <span class="title">
                         <br/>
                         Unidad: {{travel.unity}} <br/>
-                        Product: {{travel.product}} <br/>
+                        Producto: {{travel.product}} <br/>
                         Descripción: {{travel.description}}
                     </span>
                 </div>
@@ -34,8 +34,8 @@
                 <table class="striped table-logs log-table">
                     <thead>
                       <tr>
-                          <th>Device</th>
-                          <th>Date</th>
+                          <th>Dispositivo</th>
+                          <th>Fecha</th>
                           <th>Ubicación</th>
                           <th>Temperatura</th>
                       </tr>
