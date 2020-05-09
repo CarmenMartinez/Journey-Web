@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class TravelService {
   public travels: Travel [] = []
-  activeTravel: Travel = new Travel("", new Date(), "", false);
+  activeTravel: Travel = new Travel("", new Date(), "",false, null, "", "", "");
   
   travelSubject = new Subject<Travel[]>();
 
@@ -18,10 +18,10 @@ export class TravelService {
   }
 
 
-  createTravel(product: String) {
-    this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", {
-      product: product
-    }).subscribe(response => {
+  createTravel(body: Object) {
+    this.http.post("https://9vy4d36mji.execute-api.us-east-1.amazonaws.com/Sandbox/travel", 
+      body
+    ).subscribe(response => {
       console.log(response);
     });
   }
@@ -50,6 +50,7 @@ export class TravelService {
       (res: HttpResponse<Travel[]>) => {
         this.setTravel(res.body);
         this.setActiveTravel();
+        console.log(this.travels)
       },
       err => console.log(err)
     );
@@ -63,9 +64,14 @@ export class TravelService {
   }
 
   private setTravel(response: Travel[]) {
+    console.log(response)
     response.forEach(travel => {
       let newDate = new Date(Number(travel.timestamp)* 1000);
       travel.timestamp = newDate;
+      if(travel.endtimestamp){
+        let endNewDate = new Date(Number(travel.endtimestamp) * 1000);
+        travel.endtimestamp = endNewDate;
+      }
     });
     let travels = response.sort((a, b) => {
       if (a.timestamp > b.timestamp){
