@@ -47,6 +47,10 @@ export class TravellogComponent implements OnInit {
     this.setCurrentLocation();
   }
 
+  formatDate(d: Date): String {
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+  }
+
   getCurrentTravel(): Travel{
     if(!this.currentTravel)
       return null

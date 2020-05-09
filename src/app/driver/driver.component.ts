@@ -25,7 +25,7 @@ export class DriverComponent implements OnInit {
 
   stopCurrentTravel(){
     this.travelService.stopTravel(this.currentTravel.travelId)
-    alert("Travel" + this.currentTravel.travelId + " was succesfully stop" )
+    alert("Travel " + this.currentTravel.travelId + " was succesfully stop" )
     this.getCurrentTravel()
   }
 
