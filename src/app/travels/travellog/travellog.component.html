@@ -5,10 +5,10 @@
 
 
 <div class="container">
-    <h2 class="center-align">Travel logs</h2>
+    <h2 class="center-align">Detalles del viaje</h2>
     <span class="title">
         {{currentTravel.displayName}} <br/>
-        Date: {{formatDate(currentTravel.timestamp)}} - 
+        Fecha: {{formatDate(currentTravel.timestamp)}} - 
     </span>
     <span *ngIf="currentTravel.endtimestamp">
         {{formatDate(currentTravel.endtimestamp)}}
@@ -16,15 +16,19 @@
     <span class="title">
         <br/>
         Unidad: {{currentTravel.unity}} <br/>
-        Product: {{currentTravel.product}} <br/>
+        Producto: {{currentTravel.product}} <br/>
         Descripción: {{currentTravel.description}} <br/>
     </span>
 
     <a class="waves-effect waves-light btn" (click)="refresh()"><i class="material-icons">autorenew</i></a>
+    <h3 class="center-align">Temperatura</h3>
     <div class="assets chart">
         <div id="chartContainer"></div>
     </div>
+
     <div class="assets map">
+        <h3 class="center-align">Ubicación</h3>
+
         <agm-map 
             [latitude]="latitude" 
             [longitude]="longitude" 

@@ -50,7 +50,6 @@ export class TravelService {
       (res: HttpResponse<Travel[]>) => {
         this.setTravel(res.body);
         this.setActiveTravel();
-        console.log(this.travels)
       },
       err => console.log(err)
     );
@@ -64,7 +63,6 @@ export class TravelService {
   }
 
   private setTravel(response: Travel[]) {
-    console.log(response)
     response.forEach(travel => {
       let newDate = new Date(Number(travel.timestamp)* 1000);
       travel.timestamp = newDate;

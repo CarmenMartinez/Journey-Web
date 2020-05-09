@@ -17,14 +17,13 @@ export class TravellogService {
   }
 
   getHistoryTravel(): TravelLog[] {
-    console.log("FROM SERVICE ", this.travelLogs)
     return this.travelLogs;
   }
 
   getTravelById (id: string): TravelLog {
-    let index = this.travelLogs.findIndex((item) => item.travelId == id)
-    if(index == -1) return null
-    return this.travelLogs[index]
+    let index = this.travelLogs.findIndex((item) => item.travelId == id);
+    if(index == -1) return null;
+    return this.travelLogs[index];
   }
 
   pushChanges() {
@@ -42,7 +41,7 @@ export class TravellogService {
     })
       .subscribe(
       (res: HttpResponse<TravelLog[]>) => {
-        this.setTravels(res.body['TravelLogs'])
+        this.setTravels(res.body['TravelLogs']);
       },
       err => console.log(err)
     );
@@ -60,13 +59,13 @@ export class TravellogService {
         let lng = new Location(l['location']['lat'],  l['location']['long']);
         let newDate = new Date(Number(l['timestamp'])* 1000);
         let lg = new Log(newDate,l['deviceID'], lng, l['temperature']);
-        lgs.push(lg)
+        lgs.push(lg);
       });
 
       let travelLog = new TravelLog(id, lgs);      
       inTravelLogs.push(travelLog);
     }
-    Object.assign(this.travelLogs, inTravelLogs)  
+    Object.assign(this.travelLogs, inTravelLogs);
   }
 }
 

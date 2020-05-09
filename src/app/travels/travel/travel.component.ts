@@ -4,6 +4,7 @@ import { Travel } from './Travel';
 import { TravellogService } from 'src/app/travellog.service';
 import { TravelLog } from '../travellog/Travellog';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-travel',
@@ -21,7 +22,9 @@ export class TravelComponent implements OnInit {
 
   
   constructor(private travelService: TravelService,
-    private travelLogService: TravellogService) { }
+    private travelLogService: TravellogService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
       this.getTravels();
@@ -48,6 +51,10 @@ export class TravelComponent implements OnInit {
 
   createTravel(product: string){
     this.travelService.createTravel(product);
+  }
+
+  formatDate(d: Date): String {
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
   }
 
   getTravels(){
@@ -79,8 +86,10 @@ export class TravelComponent implements OnInit {
     this.travelService.stopTravel(travelID);
   }
 
-  formatDate(d: Date): String {
-    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+  travelInfo(travel: Travel) {
+    this.router.navigate([travel.travelId], {relativeTo: this.route});
   }
+
+  
 
 }

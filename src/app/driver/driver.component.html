@@ -1,7 +1,7 @@
 
 <div class="container">
     <div>
-        <h3>Create travel</h3>
+        <h3>Crear viaje</h3>
     </div>
     <div class="row">
         <form class="col s6" #f="ngForm" (ngSubmit)="submit(f)">
@@ -50,15 +50,15 @@
                     >
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Start
+            <button class="btn waves-effect waves-light" type="submit" name="action">Iniciar
                 <i class="material-icons right">send</i>
             </button>
         </form>
     </div>
     <div class="stop">
-        <h3> Stop travel </h3>
-        <p>Active travel: {{currentTravel.displayName}}</p>
-        <a class="waves-effect waves-light btn" (click)="stopCurrentTravel()"><i class="material-icons right">stop</i>Stop</a>
+        <h3> Terminar viaje </h3>
+        <p>Viaje activo: {{currentTravel.displayName}}</p>
+        <a class="waves-effect waves-light btn" (click)="stopCurrentTravel()"><i class="material-icons right">stop</i>Terminar</a>
     </div> 
 </div>
 
