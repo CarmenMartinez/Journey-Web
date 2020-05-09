@@ -14,14 +14,12 @@ const routes: Routes = [
   //{path: '', component: HomeComponent, canActivate: [AuthGuardService]},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'travels', component: TravelsComponent, children: [
+  {path: 'travel', component: TravelsComponent, children: [
     {path: '', component: TravelComponent},
-    // {path: ':id', component: TravellogComponent},
-    {path: 'travellogs', component: TravellogComponent},
+     {path: ':id', component: TravellogComponent},
 
   ]},
   {path: 'driver', component: DriverComponent},
-  {path: 'travel', component: TravelComponent},
   {path: 'travellog', component: TravellogComponent}
 ];
 

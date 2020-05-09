@@ -28,6 +28,9 @@
                 <a *ngIf="travel.status" href="#!" class="secondary-content"><i class="active-icon material-icons">hdr_strong</i></a>
             </div>
             <div class="collapsible-body" *ngIf="getTravelLogsById(travel.travelId)">
+                <button class="btn waves-effect waves-light right" (click)="travelInfo(travel)" name="action">Detalles
+                    <i class="material-icons right">send</i>
+                </button>
                 <table class="striped table-logs log-table">
                     <thead>
                       <tr>
@@ -43,7 +46,7 @@
                             <td>{{log.deviceId}}</td>
                             <td>{{formatDate(log.timestamp)}}</td>
                             <td> {{log.location.lat}}, {{log.location.long}} </td>
-                            <td>{{log.temperature}}</td>
+                            <td>{{log.temperature}} °C</td>
                         </tr>
                     </tbody>
                   </table>

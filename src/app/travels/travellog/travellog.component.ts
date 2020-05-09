@@ -5,6 +5,8 @@ import * as $ from 'jquery';
 import * as CanvasJS from '../../../assets/canvasjs.min.js';
 import { TravelService } from 'src/app/travel.service';
 import { Travel } from '../travel/Travel';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-travellog',
@@ -12,8 +14,9 @@ import { Travel } from '../travel/Travel';
   styleUrls: ['./travellog.component.css']
 })
 export class TravellogComponent implements OnInit {
-  travelLogs : TravelLog []
-  travelLog: TravelLog = new TravelLog("", null)
+  id: string;
+  travelLogs : TravelLog [];
+  travelLog: TravelLog = new TravelLog("", null);
   currentTravel: Travel;
   latitude: number;
   longitude: number;
@@ -22,9 +25,14 @@ export class TravellogComponent implements OnInit {
   dataPoints; 
   
   constructor(private travellogService: TravellogService,
-    private travelService: TravelService) { }
+    private travelService: TravelService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //get id from route
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    //TODO: Get Travel logs using the id of the travel
     this.travelLogs = this.getHistoryTravel();
     this.setCurrentTravel();
     this.setCurrentTravelLog();
@@ -53,27 +61,27 @@ export class TravellogComponent implements OnInit {
 
   getCurrentTravel(): Travel{
     if(!this.currentTravel)
-      return null
-    return this.currentTravel
+      return null;
+    return this.currentTravel;
   }
 
   getHistoryTravel(): TravelLog[]{
-    return this.travellogService.getHistoryTravel()
+    return this.travellogService.getHistoryTravel();
   }
 
   getTravelbyId(id: string) {
-    this.travelLog = this.travellogService.getTravelById(id)
+    this.travelLog = this.travellogService.getTravelById(id);
   }
 
   getTravelLogDateTemp(){
     let dateTemps = this.travelLog.logs.map((item) => {
-      return {x: item.timestamp.getHours(), y: item.temperature}
+      return {x: item.timestamp.getHours(), y: item.temperature};
     })
     return dateTemps;
   }
 
   setCurrentTravel(){
-    this.currentTravel = this.travelService.getActiveTravel()
+    this.currentTravel = this.travelService.getActiveTravel();
   }
 
   setCurrentTravelLog(){
@@ -82,9 +90,9 @@ export class TravellogComponent implements OnInit {
   }
 
   setTravelLog(id: string){
-    let index = this.travelLogs.findIndex((travel) => travel.travelId == id)
+    let index = this.travelLogs.findIndex((travel) => travel.travelId == id);
     if(index == -1) return;
-    Object.assign(this.travelLog, this.travelLogs[index])
+    Object.assign(this.travelLog, this.travelLogs[index]);
   }
 
   private setCurrentLocation() {
@@ -102,14 +110,14 @@ export class TravellogComponent implements OnInit {
     
     if(!this.travelLog.logs) return;
     
-    this.refreshChart()
-    this.refreshMap()
+    this.refreshChart();
+    this.refreshMap();
   }
 
   refreshChart(){
     let data = this.getTravelLogDateTemp();
     this.dataPoints = data;
-    this.renderChart()
+    this.renderChart();
   }
 
   refreshMap(){
@@ -135,7 +143,7 @@ export class TravellogComponent implements OnInit {
         dataPoints : this.dataPoints,
       }]
     })
-    this.chart.render()
+    this.chart.render();
   }
   
 
