@@ -2,25 +2,24 @@
 <button (click)="getTravelbyId('048b1b73-838c-11ea-9910-c3774c7a5de2')">Travel Id</button>-->
 
 
-
-
 <div class="container">
     <h2 class="center-align">Detalles del viaje</h2>
-    <span class="title">
-        {{currentTravel.displayName}} <br/>
-        Fecha: {{formatDate(currentTravel.timestamp)}} - 
-    </span>
-    <span *ngIf="currentTravel.endtimestamp">
-        {{formatDate(currentTravel.endtimestamp)}}
-    </span>
-    <span class="title">
-        <br/>
-        Unidad: {{currentTravel.unity}} <br/>
-        Producto: {{currentTravel.product}} <br/>
-        Descripción: {{currentTravel.description}} <br/>
-    </span>
-
-    <a class="waves-effect waves-light btn" (click)="refresh()"><i class="material-icons">autorenew</i></a>
+    <div *ngIf="currentTravel">
+        <span  class="title">
+            {{currentTravel.displayName}} <br/>
+            Fecha: {{formatDate(currentTravel.timestamp)}} - 
+        </span>
+        <span *ngIf="currentTravel.endtimestamp">
+            {{formatDate(currentTravel.endtimestamp)}}
+        </span>
+        <span class="title">
+            <br/>
+            Unidad: {{currentTravel.unity}} <br/>
+            Producto: {{currentTravel.product}} <br/>
+            Descripción: {{currentTravel.description}} <br/>
+        </span>
+    </div>
+    <a class="waves-effect waves-light btn" (click)="fetchAndRefresh()"><i class="material-icons">autorenew</i></a>
     <h3 class="center-align">Temperatura</h3>
     <div class="assets chart">
         <div id="chartContainer"></div>
