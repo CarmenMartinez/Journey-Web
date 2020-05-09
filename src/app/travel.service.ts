@@ -25,9 +25,15 @@ export class TravelService {
       console.log(response);
     });
   }
-  
+
   getActiveTravel(): Travel {
     return this.activeTravel;
+  }
+
+  getTravel(id: string): Travel {
+    let index = this.travels.findIndex((travel) => travel.travelId === id)
+    if(index == -1) return null;
+    return this.travels[index];
   }
 
   getTravels(): Travel[] {
