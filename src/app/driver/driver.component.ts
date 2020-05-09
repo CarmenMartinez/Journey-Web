@@ -25,14 +25,25 @@ export class DriverComponent implements OnInit {
 
   stopCurrentTravel(){
     this.travelService.stopTravel(this.currentTravel.travelId)
-    alert("Travel" + this.currentTravel.travelId + " was succesfully stop" )
+    alert("Travel " + this.currentTravel.travelId + " was succesfully stop" )
     this.getCurrentTravel()
   }
 
   submit(form: NgForm) {
-    let producto = form.value.producto
-    console.log(producto)
-    this.travelService.createTravel(producto)
+    if(!form.value.product || form.value.displayName) return
+
+    let requestBody = {}
+    requestBody['product'] = form.value.product
+
+    requestBody['displayName'] = form.value.displayName
+    
+    if(form.value.unity)
+      requestBody['unity'] = form.value.unity
+
+    if(form.value.description)
+      requestBody['description'] = form.value.description
+    
+    this.travelService.createTravel(requestBody)
     this.router.navigate(['/travel']); 
   }
   

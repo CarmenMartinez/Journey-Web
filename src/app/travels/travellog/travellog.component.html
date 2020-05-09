@@ -6,9 +6,20 @@
 
 <div class="container">
     <h2 class="center-align">Travel logs</h2>
-    <p>Travel ID: {{currentTravel.travelId}}</p>
-    <p>Product: {{currentTravel.product}}</p>
-    <p>Status: {{currentTravel.status}} </p>
+    <span class="title">
+        {{currentTravel.displayName}} <br/>
+        Date: {{formatDate(currentTravel.timestamp)}} - 
+    </span>
+    <span *ngIf="currentTravel.endtimestamp">
+        {{formatDate(currentTravel.endtimestamp)}}
+    </span>
+    <span class="title">
+        <br/>
+        Unidad: {{currentTravel.unity}} <br/>
+        Product: {{currentTravel.product}} <br/>
+        Descripción: {{currentTravel.description}} <br/>
+    </span>
+
     <a class="waves-effect waves-light btn" (click)="refresh()"><i class="material-icons">autorenew</i></a>
     <div class="assets chart">
         <div id="chartContainer"></div>

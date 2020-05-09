@@ -1,4 +1,4 @@
-<h5 class="center-align">ActiveTravel: {{activeTravel.travelId}}</h5>
+<h5 class="center-align">ActiveTravel: {{activeTravel.displayName}}</h5>
 
 <div class="container collection-travel">
     <a class="waves-effect waves-light btn" (click)="refreshTravels()"><i class="material-icons">autorenew</i></a>
@@ -12,9 +12,17 @@
                     <i class="material-icons circle ">subway</i>
                 
                     <span class="title">
-                        {{travel.travelId}} <br/>
+                        {{travel.displayName}} <br/>
+                        Date: {{formatDate(travel.timestamp)}} - 
+                    </span>
+                    <span *ngIf="travel.endtimestamp">
+                        {{formatDate(travel.endtimestamp)}}
+                    </span>
+                    <span class="title">
+                        <br/>
+                        Unidad: {{travel.unity}} <br/>
                         Product: {{travel.product}} <br/>
-                        Date: {{formatDate(travel.timestamp)}}
+                        Descripción: {{travel.description}}
                     </span>
                 </div>
                 <a *ngIf="travel.status" href="#!" class="secondary-content"><i class="active-icon material-icons">hdr_strong</i></a>
@@ -42,7 +50,7 @@
             </div>
             <div class="collapsible-body" *ngIf="!getTravelLogsById(travel.travelId)">
                 <span>
-                    No hay logs para el viaje {{travel.travelId}}
+                    No hay logs para el viaje {{travel.displayName}}
                 </span>
             </div>
             </li>
