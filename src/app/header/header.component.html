@@ -5,6 +5,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li class="active" routerLinkActive="active" ><a routerLink="/viajes">Viajes</a></li>
         <li class="active" routerLinkActive="active" ><a routerLink="/conductores">Conductores</a></li>
+        <li class="active" (click)="logOut()" *ngIf="logIn">Cerrar sesión</li>
       </ul>
     </div>
   </nav>
