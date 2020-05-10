@@ -1,7 +1,7 @@
 <h5 class="center-align">Viaje activo: {{activeTravel.displayName}}</h5>
 
 <div class="container collection-travel">
-    <a class="waves-effect waves-light btn" (click)="refreshTravels()"><i class="material-icons">autorenew</i></a>
+    <a class="waves-effect waves-light btn" (click)="refresh()"><i class="material-icons">autorenew</i></a>
     <ul class="collapsible">
         <li 
             *ngFor="let travel of travels"
@@ -28,9 +28,9 @@
                 <a *ngIf="travel.status" href="#!" class="secondary-content"><i class="active-icon material-icons">hdr_strong</i></a>
             </div>
             <div class="collapsible-body" *ngIf="getTravelLogsById(travel.travelId)">
-                <button class="btn waves-effect waves-light right" (click)="travelInfo(travel)" name="action">Detalles
+                    <button class="btn waves-effect waves-light right" (click)="travelInfo(travel)" name="action">Detalles
                     <i class="material-icons right">send</i>
-                </button>
+                </button> 
                 <table class="striped table-logs log-table">
                     <thead>
                       <tr>
@@ -48,7 +48,7 @@
                             <td> {{log.location.lat}}, {{log.location.long}} </td>
                             <td>{{log.temperature}} °C</td>
                         </tr>
-                    </tbody>
+                    </tbody> 
                   </table>
             </div>
             <div class="collapsible-body" *ngIf="!getTravelLogsById(travel.travelId)">
@@ -57,5 +57,5 @@
                 </span>
             </div>
             </li>
-      </ul>
+      </ul>   
 </div>

@@ -1,0 +1,20 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-journeywebbackend-local-172323-authRole",
+            "UnauthRoleArn": "arn:aws:iam::242209151721:role/amplify-journeywebbackend-local-172323-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::242209151721:role/amplify-journeywebbackend-local-172323-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-journeywebbackend-local-172323-deployment",
+            "UnauthRoleName": "amplify-journeywebbackend-local-172323-unauthRole",
+            "StackName": "amplify-journeywebbackend-local-172323",
+            "StackId": "arn:aws:cloudformation:us-east-1:242209151721:stack/amplify-journeywebbackend-local-172323/b35f68e0-9243-11ea-a34c-0a531bfc577e",
+            "AmplifyAppId": "d24v8pb4kz5yh6"
+        },
+        "categories": {
+            "auth": {
+                "journeywebbackend63aa1681": {}
+            }
+        }
+    }
+}

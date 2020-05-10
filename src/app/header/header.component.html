@@ -3,9 +3,9 @@
       <img class="icon-image" src="assets/images/journey.png" alt="">
       <a href="#" class="brand-logo active " routerLink="/viajes" >Journey</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="active" routerLinkActive="active" ><a routerLink="/inicio">Inicio</a></li>
         <li class="active" routerLinkActive="active" ><a routerLink="/viajes">Viajes</a></li>
         <li class="active" routerLinkActive="active" ><a routerLink="/conductores">Conductores</a></li>
+        <li class="active" (click)="logOut()" *ngIf="logIn">Cerrar sesión</li>
       </ul>
     </div>
   </nav>
