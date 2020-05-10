@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { TravelService } from 'src/app/travel.service';
 import { Travel } from './Travel';
 import { TravellogService } from 'src/app/travellog.service';
@@ -11,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './travel.component.html',
   styleUrls: ['./travel.component.css']
 })
-export class TravelComponent implements OnInit {
+export class TravelComponent implements OnInit, AfterViewInit {
+
   activeTravel: Travel;
   travels: Travel[] = [];
 
@@ -45,6 +46,14 @@ export class TravelComponent implements OnInit {
       );
   }
 
+  ngAfterViewInit(): void {
+    $(document).ready(function(){
+      let elem: any;
+      elem = $(".collapsible");
+      elem.collapsible();
+    });
+  }
+
   getActiveTravel(): Travel{
     return this.travelService.getActiveTravel();
   }
@@ -66,12 +75,20 @@ export class TravelComponent implements OnInit {
   }
 
   getTravelLogsById(id: string) {
-    let travel: TravelLog = this.travelLogService.getTravelById(id);
-    if(travel) {
-      return this.travelLogService.getTravelById(id).logs;
-    } else {
+    if(!this.travelLogs) 
       return null;
-    }
+    
+    let index = this.travelLogs.findIndex((travelLog) => travelLog.travelId == id);
+    
+    if(index == -1)
+      return null;
+    
+    return this.travelLogs[index].logs;
+  }
+
+  refresh(){
+    this.refreshTravels();
+    this.refreshTravelLogs();
   }
 
   refreshTravels() {
